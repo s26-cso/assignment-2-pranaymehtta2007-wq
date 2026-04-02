@@ -20,7 +20,7 @@ addi sp,sp,16
 ret
 
 insert:
-addi sp,sp,-24
+addi sp,sp,-32
 sd ra,16(sp)
 sd a0,8(sp)
 sd a1,0(sp)
@@ -56,11 +56,11 @@ insert_root:
 ld a0,8(sp)
 insert_done:
 ld ra,16(sp)
-addi sp,sp,24
+addi sp,sp,32
 ret
 
 get:
-addi sp,sp,-24
+addi sp,sp,-32
 sd ra,16(sp)  
 sd a0,8(sp)   #root
 sd a1,0(sp)   #val
@@ -86,7 +86,7 @@ get_invalid:
 li a0,0
 get_done:
 ld ra,16(sp)
-addi sp,sp,24
+addi sp,sp,32
 ret
 
 getAtMost:
