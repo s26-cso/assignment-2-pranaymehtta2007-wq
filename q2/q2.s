@@ -5,9 +5,11 @@ newline:    .string "\n"
 .text
 .global main
 main:
-addi sp,sp,-48
-sd ra,40(sp)
-sd s0,32(sp)
+addi sp,sp,-64
+sd ra,56(sp)
+
+sd s0,48(sp)
+sd s1,40(sp)
 addi t0,a0,-1
 sd t0,16(sp)   #store n-1
 addi t1,a1,8
@@ -118,8 +120,9 @@ exit:
 la a0,newline
 call printf
 
-ld ra, 40(sp)      
-ld s0, 32(sp)        
-addi sp, sp, 48      
+ld ra, 56(sp)      
+ld s0, 48(sp)   
+ld s1, 40(sp)          
+addi sp, sp, 64       
 li a0, 0            
 ret
