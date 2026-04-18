@@ -1,5 +1,6 @@
 .data
 format_str: .string "%d "       
+format_last: .string "%d"      
 newline:    .string "\n"
 
 .text
@@ -111,12 +112,26 @@ ld t1,8(sp)
 slli t2,s0,2
 add t1,t1,t2
 lw a1,0(t1)
+
+addi t3, t0, -1              
+beq s0, t3, print_last_elem  
+
 la a0,format_str
 call printf
+j print_next                 
+
+print_last_elem:             
+la a0, format_last           
+call printf                  
+
+print_next:                  
 addi s0,s0,1
 j print_loop
 
 exit:
+la a0,newline
+call printf
+
 ld ra, 56(sp)      
 ld s0, 48(sp)   
 ld s1, 40(sp)          
