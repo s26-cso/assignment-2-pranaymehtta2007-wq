@@ -117,9 +117,6 @@ addi s0,s0,1
 j print_loop
 
 exit:
-la a0,newline
-call printf
-
 ld ra, 56(sp)      
 ld s0, 48(sp)   
 ld s1, 40(sp)          
